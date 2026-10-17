@@ -6,8 +6,6 @@
 // Año o lugar vacío = no se muestra (no inventamos datos que no tenemos).
 
 (function () {
-  // Fotos: en la demo de un solo archivo van incrustadas (AERIS_PIEZA_IMG, por ruta).
-  const asset = (src) => (window.AERIS_PIEZA_IMG && window.AERIS_PIEZA_IMG[src]) || src;
   // gallery('amazon', 4) → portada + fotos obras/amazon-01…04 (.jpg grande, -sm.jpg carrusel)
   function gallery(prefix, n) {
     const paths = Array.from({ length: n }, (_, i) => 'obras/' + prefix + '-' + String(i + 1).padStart(2, '0'));
@@ -23,7 +21,7 @@
     { cat: 'Terciario', year: '', title: 'Centro de innovación — conductos circulares en atrio', place: '',
       text: 'El reto fue la dinámica de montaje: había que trabajar en varias zonas a la vez y en un plazo muy corto, así que empleamos maquinaria industrial de gran tonelaje. Terminamos en los plazos marcados por la dirección de obra, con un equipo que superó las expectativas.',
       specs: 'Conducto circular helicoidal de gran diámetro · montaje con grúa en varias zonas a la vez',
-      ...gallery('innovacion', 6) },
+      ...gallery('innovacion', 8) },
     { cat: 'Logística', year: '', title: 'Amazon Madrid — red de conductos de chapa', place: 'Madrid',
       text: 'Fabricación y montaje de la red de conductos de chapa galvanizada de una gran nave logística, que alimenta la distribución textil de la nave.',
       specs: 'Conducto rectangular · chapa galvanizada · fabricación y montaje',
@@ -116,7 +114,7 @@
 
   function slideHtml(o, i, idPrefix = 'ob') {
     let media = o.img
-      ? `<img src="${asset(o.img)}" alt="${o.title}" loading="lazy">`
+      ? `<img src="${o.img}" alt="${o.title}" loading="lazy">`
       : `${art(o.art, idPrefix + i)}<span class="obra-tag">Foto de obra</span>`;
     if (o.photos) {
       media = `<button type="button" class="obra-gallery-btn" data-obra="${i}" aria-label="Ver las ${o.photos.length} fotos de ${o.title}">
@@ -170,7 +168,7 @@
     const img = dlg.querySelector('img');
     let photos = [], k = 0, title = '';
     const show = () => {
-      img.src = asset(photos[k].src);
+      img.src = photos[k].src;
       img.alt = `${title} — foto ${k + 1} de ${photos.length}`;
       dlg.querySelector('.gallery-count').textContent = `${k + 1} / ${photos.length}`;
     };

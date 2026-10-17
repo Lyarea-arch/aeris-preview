@@ -30,11 +30,9 @@
   const MAX_LINES = 50;   // tope del API
 
   // Imágenes de la pieza: la 3D de Ductflow (img3d) si existe, si no el dibujo SVG.
-  // En la demo de un solo archivo van incrustadas (AERIS_PIEZA_IMG, por ruta sin ?v=).
-  const asset = (src) => (window.AERIS_PIEZA_IMG && window.AERIS_PIEZA_IMG[src.split('?')[0]]) || src;
   const pieceById = (id) => PIEZAS.find((x) => x.id === id);
-  const thumbSrc = (p) => asset(p.img3d ? p.img3d.thumb : 'piezas/' + p.id + '.svg');
-  const sketchSrc = (p) => asset(p.img3d ? p.img3d.sketch : 'piezas/' + p.id + '.svg');
+  const thumbSrc = (p) => (p.img3d ? p.img3d.thumb : 'piezas/' + p.id + '.svg');
+  const sketchSrc = (p) => (p.img3d ? p.img3d.sketch : 'piezas/' + p.id + '.svg');
 
   // Config del API: <meta name="aeris-api" content="https://api.../public/v1/orgs/aeris">.
   // Sin meta, el formulario funciona en modo demo (no envía nada).
