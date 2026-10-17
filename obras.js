@@ -2,7 +2,8 @@
 // Fotos reales: `img` (portada) y, opcional, `photos` (galería a pantalla completa).
 // Fotos en obras/: versión grande + `-sm` (carrusel), sin metadatos (GPS) — ver README.
 // Sin `img` se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
-// Obras REALES (con o sin fotos) y de EJEMPLO (`ejemplo: true`, etiqueta «Ejemplo») hasta tener más obras reales.
+// Todas las obras son REALES (con fotos o, si aún no hay, ilustración + «Fotos próximamente»).
+// Para añadir una: ver el MODELO al final de la lista.
 // Año o lugar vacío = no se muestra (no inventamos datos que no tenemos).
 
 (function () {
@@ -48,7 +49,7 @@
       ...gallery('quirurgico', 4) },
     // Antes y después: portada = «después»; en la galería, primero «antes».
     { cat: 'Reforma', year: '', title: 'Antes y después — siempre mejoramos las cosas', place: '',
-      text: 'Donde había una solución provisional de cartón, ahora hay un conducto de chapa hecho a medida. Siempre mejoramos las cosas.',
+      text: 'Los usuarios de la oficina habían improvisado un conducto de cartón; lo sustituimos por un conducto de chapa hecho a medida. Siempre mejoramos las cosas.',
       specs: 'Conducto rectangular a medida',
       ...gallery('antes-despues', 2), img: 'obras/antes-despues-02-sm.jpg' },
     { cat: 'Oficinas', year: '', title: 'Oficinas — climatización con conductos vistos', place: '',
@@ -63,24 +64,18 @@
     { cat: 'Deportivo', year: '', title: 'Estadio Santiago Bernabéu — ventilación de la zona VIP', place: 'Madrid',
       text: 'Ventilación de la zona VIP del Estadio Santiago Bernabéu, del Real Madrid.',
       specs: '', art: 'rect' },
-    { ejemplo: true, cat: 'Industrial', year: '[Año]', title: 'Nave logística — red de impulsión', place: '[Localidad]',
-      text: 'Red de impulsión y retorno para una nave de almacenaje: tramos rectos, codos y derivaciones fabricados a medida y entregados por fases.',
-      specs: 'Conducto rectangular · galvanizado 0,8 mm', art: 'rect' },
-    { ejemplo: true, cat: 'Oficinas', year: '[Año]', title: 'Edificio de oficinas — climatización por plantas', place: '[Localidad]',
-      text: 'Conductos con aislamiento para tres plantas de oficinas, con piezas numeradas por zona para agilizar el montaje en obra.',
-      specs: 'Rectangular con aislamiento · galvanizado 0,6 mm', art: 'insul' },
-    { ejemplo: true, cat: 'Comercial', year: '[Año]', title: 'Local comercial — extracción', place: '[Localidad]',
-      text: 'Tramos circulares y codos segmentados para la extracción de un local a pie de calle, con salida a cubierta.',
-      specs: 'Conducto circular · galvanizado', art: 'spiral' },
-    { ejemplo: true, cat: 'Hostelería', year: '[Año]', title: 'Cocina industrial — campana y extracción', place: '[Localidad]',
-      text: 'Campana y conducto de extracción en acero inoxidable, fabricados a la medida del espacio disponible en cocina.',
-      specs: 'Inoxidable · 1,0 mm', art: 'hood' },
-    { ejemplo: true, cat: 'Residencial', year: '[Año]', title: 'Vivienda unifamiliar — ventilación', place: '[Localidad]',
-      text: 'Red de ventilación de doble flujo con conductos circulares de pequeño diámetro y reducciones a medida.',
-      specs: 'Circular Ø160–Ø250 · galvanizado', art: 'spiral' },
-    { ejemplo: true, cat: 'Piezas especiales', year: '[Año]', title: 'Transiciones y piezas a plano', place: 'Taller Aeris',
-      text: 'Transiciones rectangular–circular, pantalones y codos de reducción fabricados a partir del plano del instalador.',
-      specs: 'Según plano · galvanizado / inoxidable', art: 'fittings' },
+    /* ── MODELO para una obra nueva (NO se muestra: está comentado). ──
+       Lo que hay que pedir a Nicu por cada obra (lo que falte se deja '' y no se muestra):
+       { cat:   'Industrial',            // tipo: Industrial, Logística, Oficinas, Hospital, Terciario…
+         year:  '2026',                  // año de la obra
+         place: 'Torrejón de Ardoz',     // localidad (o '' si el cliente no quiere que se sepa)
+         title: 'Cliente u obra — qué se hizo',   // ¿se puede nombrar al cliente? si no: «Nave logística — …»
+         text:  'Qué hizo Aeris (¿fabricación, montaje o ambos?), el reto de la obra y cómo se resolvió.',
+         specs: '12.000 m² de chapa · galvanizado 0,8 mm · aislamiento 30 mm · plazo 6 semanas',
+                                          // cifras: m² de chapa, materiales/espesores, aislamiento, altura, plazo
+         ...gallery('prefijo', 6) },      // fotos en obras/prefijo-01…06.jpg (+ -sm), sin caras ni matrículas
+       Sin fotos todavía: en vez de `...gallery()`, poner art: 'rect' | 'insul' | 'spiral' | 'hood' | 'fittings'
+       (ilustración + etiqueta «Fotos próximamente», como el Bernabéu). */
   ];
 
   // Conducto rectangular visto de lado, colgado del techo, con derivación a un difusor.
@@ -140,7 +135,7 @@
   function slideHtml(o, i, idPrefix = 'ob') {
     let media = o.img
       ? `<img src="${o.img}" alt="${o.title}" loading="lazy">`
-      : `${art(o.art, idPrefix + i)}<span class="obra-tag">${o.ejemplo ? "Ejemplo" : "Fotos próximamente"}</span>`;
+      : `${art(o.art, idPrefix + i)}<span class="obra-tag">Fotos próximamente</span>`;
     if (o.photos) {
       media = `<button type="button" class="obra-gallery-btn" data-obra="${i}" aria-label="Ver las ${o.photos.length} fotos de ${o.title}">
         ${media}<span class="obra-tag obra-tag-photos">${o.photos.length} fotos</span></button>`;
