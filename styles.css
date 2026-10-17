@@ -37,6 +37,8 @@
 }
 
 * { box-sizing: border-box; }
+/* `hidden` gana siempre (sin esto, un display: flex/grid del componente lo anula). */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -77,17 +79,30 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .btn-line { height: 52px; background: transparent; color: var(--accent); border: 1px solid var(--accent); font-weight: 600; font-size: 16px; }
 
 /* hero */
-.hero { position: relative; height: 780px; overflow: hidden; background: var(--ink); }
-.hero-duct { position: absolute; right: -150px; top: 30px; overflow: visible; }
-.hero-copy { position: relative; padding: 130px 80px 0; max-width: 700px; }
+.hero { position: relative; height: 780px; overflow: hidden; background: var(--ink-4); }
+/* Foto real de obra a todo el ancho; el degradado oscurece la izquierda para leer el texto. */
+.hero-photo { position: absolute; inset: 0; }
+.hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 65% 70%; }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(8, 11, 13, 0.92) 0%, rgba(8, 11, 13, 0.78) 32%, rgba(8, 11, 13, 0.25) 62%, rgba(8, 11, 13, 0) 80%),
+              linear-gradient(0deg, rgba(8, 11, 13, 0.85) 0%, rgba(8, 11, 13, 0) 30%); }
+.hero-copy { position: relative; z-index: 1; padding: 112px 80px 0; max-width: 700px; }
+.hero-copy p { color: #D2DADF; }
 .hero-copy h1 { font-size: 100px; line-height: 1; }
 .hero-copy h1 span { display: block; }
 .hero-copy p { margin-top: 32px; max-width: 480px; font-size: 19px; line-height: 1.55; color: var(--fg-dim); }
-.hero-actions { margin-top: 44px; display: flex; gap: 16px; }
-.hero-strip { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); background: var(--ink); }
+.hero-actions { margin-top: 40px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.hero-actions .btn { min-width: 260px; }   /* aceeasi latime: unul sub altul arata aliniat */
+.hero-actions .btn-outline { border-color: rgba(255, 255, 255, 0.5); background: rgba(8, 11, 13, 0.4); }
+.hero-strip { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 96px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); background: var(--ink); }
 .hero-strip-item { display: flex; align-items: center; gap: 18px; padding: 0 32px; color: var(--fg-dim3); font-size: 16px; border-left: 1px solid var(--line); }
 .hero-strip-item:first-child { padding-left: 80px; border-left: 0; }
 .hero-strip-item:hover { color: #fff; }
+/* Cifras clave bajo el titular */
+.hero-stats { background: rgba(8, 11, 13, 0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-top-color: rgba(255, 255, 255, 0.12); }
+.hero-stats .hero-strip-item { flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; border-left-color: rgba(255, 255, 255, 0.12); }
+.hero-stats b { font-family: 'Archivo', sans-serif; font-weight: 400; font-stretch: 112%; font-size: 28px; line-height: 1; color: var(--accent); }
+.hero-stats span { font-size: 14px; color: #C4CDD3; }
 .hero-strip-item .num { font-family: 'Archivo', sans-serif; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; }
 
 /* anclas: que la cabecera fija no tape el inicio de la sección */
@@ -162,9 +177,10 @@ section[id] { scroll-margin-top: 72px; }
 .refs-head { padding: 0 80px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .refs-head h2 { margin-top: 16px; font-size: 44px; line-height: 1.08; max-width: 620px; }
 .refs-stats { margin: 0; display: flex; gap: 40px; }
-.refs-stats div { border-left: 1px solid var(--line-3); padding-left: 18px; }
+.refs-stats div { border-left: 1px solid var(--line-3); padding-left: 18px; display: flex; flex-direction: column; }
+/* Cifra siempre abajo: alineadas aunque una etiqueta tenga 1 línea y otra 2 (el hueco queda arriba). */
 .refs-stats dt { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim2); max-width: 130px; line-height: 1.4; }
-.refs-stats dd { margin: 6px 0 0; font-family: 'Archivo', sans-serif; font-weight: 300; font-stretch: 112%; font-size: 48px; line-height: 1; color: var(--accent); }
+.refs-stats dd { margin: auto 0 0; padding-top: 6px; font-family: 'Archivo', sans-serif; font-weight: 300; font-stretch: 112%; font-size: 48px; line-height: 1; color: var(--accent); }
 .refs-rows { margin-top: 56px; display: flex; flex-direction: column; gap: 16px; }
 .refs-row { display: flex; overflow: hidden; padding: 0 80px; }
 .refs-track { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
@@ -462,6 +478,34 @@ section[id] { scroll-margin-top: 72px; }
 .status-note.accepted { color: var(--accent); }
 
 /* responsive */
+/* ── Tema claro ──
+   Se añade `tema-claro` a una sección para que su contenido pase a fondo claro: los componentes
+   usan variables (--ink, --fg, --line…), así que basta con redefinirlas aquí. */
+.tema-claro {
+  --ink: #FFFFFF; --ink-2: #FFFFFF; --ink-3: #F4F7F8; --ink-4: #E9EEF1;
+  --line: #E3E8EC; --line-2: #D5DCE1; --line-3: #B8C3CA;
+  --fg: #14191D; --fg-dim: #4E5A63; --fg-dim2: #66737C; --fg-dim3: #33404A;
+  --accent: #0B6C88;
+  background: var(--ink); color: var(--fg);
+}
+.tema-claro.refs, .tema-claro.section-mid { background: #FFFFFF; }
+.tema-claro .eyebrow { font-weight: 600; }
+.tema-claro .pill { color: var(--fg-dim3); }
+.tema-claro .pill.active { color: #FFFFFF; }
+.tema-claro .piece-option:hover, .tema-claro .piece-option.active { color: var(--fg); }
+.tema-claro .piece-list { box-shadow: 0 16px 40px rgba(20, 25, 29, 0.14); }
+.tema-claro .ref-icon { background: #E1F1F6; }
+.tema-claro .obra-cat { background: #E1F1F6; color: #0B6C88; }
+.tema-claro .obra { background: #FFFFFF; }
+/* Ilustraciones de las obras de ejemplo: dibujadas en oscuro → invertidas para fondo claro. */
+.tema-claro .obra-media > svg { filter: invert(1) hue-rotate(180deg) brightness(0.97); }
+.tema-claro .obra-media { background: #E9EEF1; }
+.tema-claro .obra-tag { background: rgba(255, 255, 255, 0.92); border-color: var(--line-2); color: var(--fg-dim3); }
+.tema-claro .obra-tag.obra-tag-photos { background: rgba(10, 14, 16, 0.75); border-color: rgba(255, 255, 255, 0.2); color: #fff; }
+.tema-claro .dim.invalid .dim-input, .tema-claro .ut-custom.invalid .dim-input { border-color: #C2410C; }
+.tema-claro .form-error { color: #B42318; }
+.tema-claro .btn-primary, .tema-claro .quote-form button[type=submit]:not([disabled]) { color: #FFFFFF; }
+
 @media (max-width: 1360px) {
   .nav { gap: 28px; padding-left: 40px; padding-right: 40px; }
   .nav-links { gap: 22px; font-size: 14px; }
@@ -482,8 +526,13 @@ section[id] { scroll-margin-top: 72px; }
   .legal { grid-template-columns: 1fr; gap: 32px; }
   .legal-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
   .hero-copy h1 { font-size: 64px; }
-  .hero-duct { opacity: 0.35; right: -260px; }
-  .hero-strip { position: static; height: auto; grid-template-columns: 1fr 1fr; }
+  .hero { height: auto; }   /* textul + cifrele dau inaltimea; altfel 780px pot taia banda */
+  .hero-copy { padding-bottom: 48px; }
+  .hero-photo img { object-position: 70% 60%; }
+  .hero::after { background: linear-gradient(180deg, rgba(8, 11, 13, 0.85) 0%, rgba(8, 11, 13, 0.55) 45%, rgba(8, 11, 13, 0.35) 70%, rgba(8, 11, 13, 0.9) 100%); }
+  .hero-stats b { font-size: 22px; white-space: nowrap; }
+  .hero-stats span { font-size: 13px; }
+  .hero-strip { position: relative; height: auto; grid-template-columns: 1fr 1fr; }   /* relative: deasupra degradadului */
   .hero-strip-item { padding: 16px 24px !important; border-left: 0; border-top: 1px solid var(--line); }
   .cards { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; gap: 32px; }
