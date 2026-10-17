@@ -2,7 +2,7 @@
 // Fotos reales: `img` (portada) y, opcional, `photos` (galería a pantalla completa).
 // Fotos en obras/: versión grande + `-sm` (carrusel), sin metadatos (GPS) — ver README.
 // Sin `img` se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
-// Las obras con fotos son REALES; las ilustradas son de EJEMPLO hasta tener más obras de Aeris.
+// Obras REALES (con o sin fotos) y de EJEMPLO (`ejemplo: true`, etiqueta «Ejemplo») hasta tener más obras reales.
 // Año o lugar vacío = no se muestra (no inventamos datos que no tenemos).
 
 (function () {
@@ -38,22 +38,26 @@
       text: 'Conductos de conexión entre los climatizadores de cubierta y la red del edificio: tramos rectangulares, codos y piezas de transición, parte de ellos con aislamiento.',
       specs: 'Conducto rectangular · aislamiento · piezas de transición',
       ...gallery('conexionado', 4) },
-    { cat: 'Industrial', year: '[Año]', title: 'Nave logística — red de impulsión', place: '[Localidad]',
+    // Real, todavía sin fotos (Ingrid las busca): ilustración + «Fotos próximamente».
+    { cat: 'Deportivo', year: '', title: 'Estadio Santiago Bernabéu — ventilación de la zona VIP', place: 'Madrid',
+      text: 'Ventilación de la zona VIP del Estadio Santiago Bernabéu, del Real Madrid.',
+      specs: '', art: 'rect' },
+    { ejemplo: true, cat: 'Industrial', year: '[Año]', title: 'Nave logística — red de impulsión', place: '[Localidad]',
       text: 'Red de impulsión y retorno para una nave de almacenaje: tramos rectos, codos y derivaciones fabricados a medida y entregados por fases.',
       specs: 'Conducto rectangular · galvanizado 0,8 mm', art: 'rect' },
-    { cat: 'Oficinas', year: '[Año]', title: 'Edificio de oficinas — climatización por plantas', place: '[Localidad]',
+    { ejemplo: true, cat: 'Oficinas', year: '[Año]', title: 'Edificio de oficinas — climatización por plantas', place: '[Localidad]',
       text: 'Conductos con aislamiento para tres plantas de oficinas, con piezas numeradas por zona para agilizar el montaje en obra.',
       specs: 'Rectangular con aislamiento · galvanizado 0,6 mm', art: 'insul' },
-    { cat: 'Comercial', year: '[Año]', title: 'Local comercial — extracción', place: '[Localidad]',
+    { ejemplo: true, cat: 'Comercial', year: '[Año]', title: 'Local comercial — extracción', place: '[Localidad]',
       text: 'Tramos circulares y codos segmentados para la extracción de un local a pie de calle, con salida a cubierta.',
       specs: 'Conducto circular · galvanizado', art: 'spiral' },
-    { cat: 'Hostelería', year: '[Año]', title: 'Cocina industrial — campana y extracción', place: '[Localidad]',
+    { ejemplo: true, cat: 'Hostelería', year: '[Año]', title: 'Cocina industrial — campana y extracción', place: '[Localidad]',
       text: 'Campana y conducto de extracción en acero inoxidable, fabricados a la medida del espacio disponible en cocina.',
       specs: 'Inoxidable · 1,0 mm', art: 'hood' },
-    { cat: 'Residencial', year: '[Año]', title: 'Vivienda unifamiliar — ventilación', place: '[Localidad]',
+    { ejemplo: true, cat: 'Residencial', year: '[Año]', title: 'Vivienda unifamiliar — ventilación', place: '[Localidad]',
       text: 'Red de ventilación de doble flujo con conductos circulares de pequeño diámetro y reducciones a medida.',
       specs: 'Circular Ø160–Ø250 · galvanizado', art: 'spiral' },
-    { cat: 'Piezas especiales', year: '[Año]', title: 'Transiciones y piezas a plano', place: 'Taller Aeris',
+    { ejemplo: true, cat: 'Piezas especiales', year: '[Año]', title: 'Transiciones y piezas a plano', place: 'Taller Aeris',
       text: 'Transiciones rectangular–circular, pantalones y codos de reducción fabricados a partir del plano del instalador.',
       specs: 'Según plano · galvanizado / inoxidable', art: 'fittings' },
   ];
@@ -115,7 +119,7 @@
   function slideHtml(o, i, idPrefix = 'ob') {
     let media = o.img
       ? `<img src="${o.img}" alt="${o.title}" loading="lazy">`
-      : `${art(o.art, idPrefix + i)}<span class="obra-tag">Foto de obra</span>`;
+      : `${art(o.art, idPrefix + i)}<span class="obra-tag">${o.ejemplo ? "Ejemplo" : "Fotos próximamente"}</span>`;
     if (o.photos) {
       media = `<button type="button" class="obra-gallery-btn" data-obra="${i}" aria-label="Ver las ${o.photos.length} fotos de ${o.title}">
         ${media}<span class="obra-tag obra-tag-photos">${o.photos.length} fotos</span></button>`;
@@ -127,7 +131,7 @@
           <div class="obra-meta"><span class="obra-cat">${o.cat}</span><span>${[o.place, o.year].filter(Boolean).join(" · ")}</span></div>
           <h3>${o.title}</h3>
           <p>${o.text}</p>
-          <div class="obra-specs">${o.specs}</div>
+          ${o.specs ? `<div class="obra-specs">${o.specs}</div>` : ""}
           <a href="configurador.html" class="link-arrow">Pedir algo similar →</a>
         </div>
       </article>`;
