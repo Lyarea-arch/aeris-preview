@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" font-family="Inter, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00A8A8"/></marker></defs>
+<g id="corp">
+<polygon points="139.9,161 289.6,247.5 289.6,158.3 139.9,71.8" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="212.3,119.2 362,205.7 362,116.4 212.3,30" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="145.5,81.6 217.9,39.8 356.4,119.7 283.9,161.5" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="283.9,161.5 356.4,119.7 356.4,195.9 283.9,237.7" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="89.2,114.1 147.1,80.7 185.7,103 127.8,136.4" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="139.1,142.9 197,109.5 235.6,131.8 177.7,165.2" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="189,171.7 246.9,138.3 285.5,160.6 227.6,194" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="127.8,136.4 185.7,103 185.7,179.2 127.8,212.6" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="177.7,165.2 235.6,131.8 235.6,208 177.7,241.4" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="227.6,194 285.5,160.6 285.5,236.8 227.6,270.2" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="83.5,193.6 133.4,222.4 133.4,133.2 83.5,104.3" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="92,188.7 125,207.7 125,138 92,119" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="133.4,222.4 183.3,251.2 183.3,162 133.4,133.2" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="141.9,217.5 174.9,236.6 174.9,166.8 141.9,147.8" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="183.3,251.2 233.2,280 233.2,190.8 183.3,162" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="191.8,246.3 224.8,265.4 224.8,195.7 191.8,176.6" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="cote">
+<line x1="90.5" y1="205.7" x2="140.4" y2="234.5" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="69.6" y1="193.6" x2="69.6" y2="104.3" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g id="litere">
+<text x="124.7" y="242.7" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">A1</text>
+<text x="51" y="155.5" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">B1</text>
+</g>
+</svg>

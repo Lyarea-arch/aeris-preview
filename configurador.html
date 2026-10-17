@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configurador de pedidos – Aeris Factory</title>
+<meta name="description" content="Configura tus conductos de chapa: elige la pieza, escribe las medidas del plano y envía la solicitud a Aeris Factory.">
+<link rel="canonical" href="https://aerisfactory.es/configurador.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aeris Factory">
+<meta property="og:title" content="Configurador de pedidos – Aeris Factory">
+<meta property="og:description" content="Configura tus conductos de chapa: elige la pieza, escribe las medidas del plano y envía la solicitud a Aeris Factory.">
+<meta property="og:url" content="https://aerisfactory.es/configurador.html">
+<meta property="og:locale" content="es_ES">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- layout:header -->
+<header class="nav">
+  <a href="index.html#inicio" class="brand" aria-label="Aeris Factory, inicio">
+    <svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#4CC3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5 C10 -1 16 11 32 5"/><path d="M2 13 C10 7 16 19 32 13"/><path d="M2 21 C10 15 16 27 32 21"/></svg>
+    <span>AERIS</span>
+  </a>
+  <div class="nav-menu" id="nav-menu">
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html#gama">Gama</a>
+      <a href="obras.html" data-page="obras">Obras</a>
+      <a href="empresa.html" data-page="empresa">Empresa</a>
+      <a href="configurador.html" data-page="configurador" aria-current="page">Configurador</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="portal.html" class="nav-portal">Acceso clientes</a>
+  </div>
+  <a href="configurador.html" class="btn btn-accent nav-cta">Pedir presupuesto</a>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<!-- /layout:header -->
+<section id="pedido" class="section section-mid">
+  <div class="eyebrow">Configurador</div>
+  <h1>Configura tu pedido</h1>
+  <p class="lead">Elige la pieza, escribe las medidas como en el plano y añádela a la solicitud. Aeris te responde con la oferta.</p>
+
+  <div class="configurator">
+    <div class="panel">
+      <div class="field-group">
+        <div class="field-label">Pieza</div>
+        <div class="piece-picker" id="piece-picker">
+          <button type="button" class="piece-picker-btn" id="piece-picker-btn" aria-haspopup="listbox" aria-expanded="false">
+            <img id="piece-picker-img" alt="">
+            <span id="piece-picker-name">Elige una pieza</span>
+            <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="piece-list" id="piece-list" role="listbox" aria-label="Piezas rectangulares" hidden></div>
+        </div>
+        <p class="field-hint">Piezas rectangulares. Circulares: próximamente.</p>
+      </div>
+
+      <div class="piece-drawing">
+        <div class="sketch-wrap" id="piece-sketch">
+          <img id="piece-drawing-img" alt="">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">Medidas <span class="field-label-note">en mm (ángulos en grados)</span></div>
+        <div class="dims" id="dims"></div>
+      </div>
+
+      <div class="field-group" id="ut-group">
+        <div class="field-label">Unión <span class="field-label-note">perfil de unión entre tramos</span></div>
+        <div class="pills" id="ut-pills"></div>
+        <label class="ut-custom" id="ut-custom" hidden>
+          <span>Desarrollo de la unión</span>
+          <span class="dim-input">
+            <input type="number" id="ut-custom-val" inputmode="numeric" min="1" max="500" step="1" placeholder="0">
+            <span class="dim-unit">mm</span>
+          </span>
+        </label>
+      </div>
+      <p class="field-hint" id="ut-none" hidden>Esta pieza no lleva unión.</p>
+
+      <div class="field-grid">
+        <div class="field-group">
+          <div class="field-label">Material</div>
+          <div class="pills" id="mat-pills"></div>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Aislamiento</div>
+          <div class="pills" id="ins-pills"></div>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Cantidad</div>
+          <div class="qty">
+            <button type="button" id="qty-minus" aria-label="Menos unidades">−</button>
+            <input type="number" id="qty-value" min="1" max="999" value="1" aria-label="Cantidad">
+            <button type="button" id="qty-plus" aria-label="Más unidades">+</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Espesor de chapa</div>
+          <div class="thick-auto" id="thick-text">—</div>
+          <p class="field-hint">Automático según la medida mayor.</p>
+        </div>
+      </div>
+
+      <label class="note-field">
+        <span class="field-label">Nota <span class="field-label-note">opcional</span></span>
+        <textarea id="piece-note" rows="2" maxlength="300" placeholder="Ej.: con tapa de registro, bridas en un solo extremo…"></textarea>
+      </label>
+
+      <button type="button" id="add-item" class="btn btn-line" disabled>Añadir a la solicitud</button>
+      <p class="field-hint" id="add-hint">Completa todas las medidas para añadir la pieza.</p>
+    </div>
+
+    <div class="summary">
+      <div class="request-list">
+        <div class="field-label">Tu solicitud</div>
+        <p id="empty-list" class="muted">Todavía no has añadido piezas.</p>
+        <ul id="items-list" class="items"></ul>
+        <div id="total-line" class="total-line" hidden></div>
+      </div>
+
+      <form id="quote-form" class="quote-form">
+        <label>Nombre
+          <input type="text" id="f-name" autocomplete="name" required>
+        </label>
+        <label>Empresa
+          <input type="text" id="f-company" autocomplete="organization">
+        </label>
+        <label>Correo electrónico
+          <input type="email" id="f-email" autocomplete="email" required>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="f-consent" required>
+          <span>Acepto la <a href="legal.html#privacidad" class="link-inline">política de privacidad</a> de Aeris.</span>
+        </label>
+        <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <button type="submit" id="submit-btn" class="btn btn-accent" disabled>Enviar solicitud a Aeris</button>
+        <p class="fine-print">La solicitud llega a Aeris, que revisa las piezas y te envía la oferta por correo.</p>
+      </form>
+
+      <div id="sent-panel" class="sent-panel" hidden>
+        <div class="sent-title">Solicitud enviada</div>
+        <p>Aeris ha recibido tu solicitud y te responderá al correo indicado. Podrás seguirla en el portal de cliente.</p>
+        <a href="portal.html" class="link-arrow">Ir al portal de cliente →</a>
+        <button type="button" id="reset-btn" class="btn btn-outline">Nueva solicitud</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- layout:footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="brand">
+        <svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#4CC3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5 C10 -1 16 11 32 5"/><path d="M2 13 C10 7 16 19 32 13"/><path d="M2 21 C10 15 16 27 32 21"/></svg>
+        <span>AERIS</span>
+      </div>
+      <p class="footer-desc">Conductos de chapa para climatización, fabricados a medida en Ajalvir (Madrid).</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Productos</div>
+      <a href="index.html#gama">Gama de piezas</a>
+      <a href="obras.html">Obras</a>
+      <a href="index.html#referencias">Referencias</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Clientes</div>
+      <a href="configurador.html">Configurador</a>
+      <a href="portal.html">Portal de cliente</a>
+      <a href="index.html#proceso">Cómo trabajamos</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Empresa</div>
+      <a href="empresa.html">Quiénes somos</a>
+      <a href="index.html#contacto">Contacto</a>
+      <a href="tel:+34600606849">600 60 68 49</a>
+      <a href="mailto:ciuinicolae@yahoo.es">ciuinicolae@yahoo.es</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Aeris Factory SL · CIF B88686266 · <a href="legal.html#aviso-legal">Aviso legal</a> · <a href="legal.html#privacidad">Privacidad</a> · <a href="legal.html#cookies">Cookies</a></span>
+    <span>Gestión de pedidos con Ductflow</span>
+  </div>
+</footer>
+<!-- /layout:footer -->
+
+<script src="nav.js"></script>
+<script src="piezas.js"></script>
+<script src="configurator.js"></script>
+</body>
+</html>

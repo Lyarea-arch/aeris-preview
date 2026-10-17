@@ -1,0 +1,3 @@
+# Version de prueba: no indexar
+User-agent: *
+Disallow: /

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" font-family="Inter, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00A8A8"/></marker></defs>
+<g id="corp">
+<polygon points="237.4,123.7 344,185.3 344,91.6 237.4,30" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="99.7,122.4 243,39.7 338.5,94.8 195.2,177.5" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="195.2,177.5 338.5,94.8 338.5,175.7 195.2,258.4" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="94.1,206.5 200.8,268 200.8,174.3 94.1,112.7" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="102.5,201.6 192.4,253.6 192.4,179.1 102.5,127.2" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="cote">
+<line x1="87.2" y1="218.4" x2="193.9" y2="280" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="80.3" y1="206.5" x2="80.3" y2="112.7" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="207.6" y1="280" x2="350.9" y2="197.3" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g id="litere">
+<text x="131.4" y="271.5" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">A</text>
+<text x="61.9" y="166" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">B</text>
+<text x="288.4" y="261" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">L</text>
+</g>
+</svg>

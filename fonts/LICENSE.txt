@@ -1,0 +1,13 @@
+Tipografías incluidas en este sitio (descargadas de Google Fonts, juego latino, octubre 2026):
+
+- Archivo (archivo-latin.woff2)
+  Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+
+- IBM Plex Sans (ibm-plex-sans-latin.woff2)
+  Copyright 2017 IBM Corp. (https://github.com/IBM/plex)
+
+Ambas se distribuyen bajo la SIL Open Font License, versión 1.1:
+https://openfontlicense.org/open-font-license-official-text/
+
+La licencia permite usarlas, incrustarlas en sitios web y redistribuirlas libremente,
+siempre que no se vendan por separado y se conserve este aviso.

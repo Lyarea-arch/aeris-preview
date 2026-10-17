@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" font-family="Inter, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00A8A8"/></marker></defs>
+<g id="corp">
+<polygon points="154,176.5 276.8,247.4 276.8,139.5 154,68.6" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="220.9,137.9 343.6,208.8 343.6,100.9 220.9,30" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="160.4,79.7 227.3,41.1 337.2,104.6 270.3,143.2" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="270.3,143.2 337.2,104.6 337.2,197.7 270.3,236.3" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="114.6,129.4 175.1,94.5 263,145.3 202.6,180.2" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="202.6,180.2 263,145.3 263,217.2 202.6,252.1" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="108.2,205.1 209,263.2 209,176.5 108.2,118.3" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="117.8,199.5 199.3,246.6 199.3,182.1 117.8,135" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="cote">
+<line x1="116.1" y1="218.8" x2="216.9" y2="277" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="92.3" y1="205.1" x2="92.3" y2="118.3" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g id="litere">
+<text x="177" y="273.7" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">A1</text>
+<text x="71.2" y="169.1" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">B1</text>
+</g>
+</svg>

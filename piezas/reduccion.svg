@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" font-family="Inter, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00A8A8"/></marker></defs>
+<g id="corp">
+<polygon points="248.4,99.6 332.4,148.1 332.4,78.5 248.4,30" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="117.8,102.3 133,95.5 148.2,88.7 163.4,81.9 178.7,75.1 193.9,68.3 209.1,61.5 224.3,54.7 239.6,47.9 254.8,41.1 326,82.2 314.9,91.4 303.7,100.5 292.5,109.6 281.4,118.8 270.2,127.9 259.1,137.1 247.9,146.2 236.7,155.3 225.6,164.5" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="225.6,164.5 236.7,155.3 247.9,146.2 259.1,137.1 270.2,127.9 281.4,118.8 292.5,109.6 303.7,100.5 314.9,91.4 326,82.2 326,137.1 314.9,150.2 303.7,163.3 292.5,176.4 281.4,189.6 270.2,202.7 259.1,215.8 247.9,229 236.7,242.1 225.6,255.2" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="111.4,196.7 231.9,266.3 231.9,160.8 111.4,91.2" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="121,191.1 222.4,249.7 222.4,166.3 121,107.8" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="cote">
+<line x1="103.5" y1="210.4" x2="224" y2="280" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="95.5" y1="196.7" x2="95.5" y2="91.2" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="239.8" y1="280" x2="340.3" y2="161.9" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g id="litere">
+<text x="153.2" y="270.8" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">A</text>
+<text x="74.4" y="151.3" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">B</text>
+<text x="300.6" y="246.6" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">L</text>
+</g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" font-family="Inter, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#00A8A8"/></marker></defs>
+<g id="corp">
+<polygon points="223.8,101.7 315.3,154.5 313.3,82.8 221.9,30" fill="#DFEDED" stroke="#03444A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="89.5,151.9 96,147.9 101.9,144 108,139.5 114.2,134.5 120.6,129.2 127.3,123.4 134,117.3 141,110.9 148.1,104.3 155.4,97.5 162.8,90.6 170.4,83.7 178.1,76.7 186,69.9 194.1,63.1 202.4,56.6 210.9,50.3 219.5,44.4 227.6,39.5 308,85.9 300,90.8 291.3,96.7 282.8,103 274.6,109.6 266.5,116.3 258.6,123.2 250.8,130.1 243.2,137.1 235.8,144 228.5,150.8 221.4,157.4 214.5,163.8 207.7,169.8 201.1,175.6 194.7,181 188.4,185.9 182.4,190.4 176.5,194.4 170,198.4" fill="#EAF4F4" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="170,198.4 176.5,194.4 182.4,190.4 188.4,185.9 194.7,181 201.1,175.6 207.7,169.8 214.5,163.8 221.4,157.4 228.5,150.8 235.8,144 243.2,137.1 250.8,130.1 258.6,123.2 266.5,116.3 274.6,109.6 282.8,103 291.3,96.7 300,90.8 308,85.9 309.6,145 303.1,149 297.3,153 291.2,157.5 285,162.4 278.5,167.8 271.9,173.6 265.1,179.7 258.2,186 251.1,192.6 243.8,199.4 236.4,206.3 228.8,213.3 221.1,220.2 213.1,227.1 205.1,233.9 196.8,240.4 188.3,246.7 179.6,252.6 171.6,257.5" fill="#D8E9E9" stroke="#03444A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="85.8,214.1 177.3,267 175.3,195.3 83.8,142.5" fill="#F7FAFA" stroke="#03444A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="93.8,209.5 168.8,252.8 167.3,199.9 92.4,156.7" fill="#B9CFCF" stroke="#03444A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g id="cote">
+<line x1="79" y1="226" x2="170.5" y2="278.8" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="72.2" y1="214.1" x2="70.2" y2="142.5" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="328.9" y1="153.1" x2="328.9" y2="185.9" stroke="#00A8A8" stroke-width="1.6" marker-start="url(#arr)" marker-end="url(#arr)"/>
+</g>
+<g id="litere">
+<text x="115.6" y="274.5" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">A</text>
+<text x="53" y="184.7" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">B</text>
+<text x="347" y="174.1" font-size="19" font-weight="700" fill="#E66414" text-anchor="middle">D</text>
+</g>
+</svg>
