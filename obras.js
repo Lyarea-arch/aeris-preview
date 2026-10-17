@@ -1,10 +1,21 @@
 // Carrusel de obras Aeris (vanilla JS).
-// Para usar fotos reales: añade `img: 'obras/01.jpg'` a cada obra. Sin `img`
-// se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
-// Textos de EJEMPLO: se sustituyen por obras reales de Aeris.
+// Fotos reales: `img` (portada) y, opcional, `photos` (galería a pantalla completa).
+// Fotos en obras/: versión grande + `-sm` (carrusel), sin metadatos (GPS) — ver README.
+// Sin `img` se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
+// La primera obra es REAL; las demás son de EJEMPLO hasta tener obras reales de Aeris.
 
 (function () {
+  // Fotos: en la demo de un solo archivo van incrustadas (AERIS_PIEZA_IMG, por ruta).
+  const asset = (src) => (window.AERIS_PIEZA_IMG && window.AERIS_PIEZA_IMG[src]) || src;
+  const AUTO = Array.from({ length: 9 }, (_, i) => 'obras/automocion-' + String(i + 1).padStart(2, '0'));
+
   const OBRAS = [
+    // Obra REAL (el cliente no permite publicar su nombre).
+    { cat: 'Automoción', year: '2026', title: 'Planta de automoción — climatización de naves y cubierta', place: 'Planta industrial',
+      text: 'Un reto logístico y humano: grandes redes de conductos en cubierta y en el interior de las naves, con montaje a 15 m de altura. Una vez más, el equipo respondió con profesionalidad.',
+      specs: '40.000 m² de chapa · 12.000 m² en aluminio · 9 ml de tubo circular · montaje a 15 m',
+      img: AUTO[0] + '-sm.jpg',
+      photos: AUTO.map((p) => ({ src: p + '.jpg', thumb: p + '-sm.jpg' })) },
     { cat: 'Industrial', year: '[Año]', title: 'Nave logística — red de impulsión', place: '[Localidad]',
       text: 'Red de impulsión y retorno para una nave de almacenaje: tramos rectos, codos y derivaciones fabricados a medida y entregados por fases.',
       specs: 'Conducto rectangular · galvanizado 0,8 mm', art: 'rect' },
@@ -80,9 +91,13 @@
   }
 
   function slideHtml(o, i, idPrefix = 'ob') {
-    const media = o.img
-      ? `<img src="${o.img}" alt="${o.title}" loading="lazy">`
+    let media = o.img
+      ? `<img src="${asset(o.img)}" alt="${o.title}" loading="lazy">`
       : `${art(o.art, idPrefix + i)}<span class="obra-tag">Foto de obra</span>`;
+    if (o.photos) {
+      media = `<button type="button" class="obra-gallery-btn" data-obra="${i}" aria-label="Ver las ${o.photos.length} fotos de ${o.title}">
+        ${media}<span class="obra-tag obra-tag-photos">${o.photos.length} fotos</span></button>`;
+    }
     return `
       <article class="obra" role="group" aria-roledescription="obra" aria-label="${i + 1} de ${OBRAS.length}">
         <div class="obra-media">${media}</div>
@@ -115,8 +130,49 @@
     draw();
   }
 
+  // Galería a pantalla completa (<dialog>: Esc cierra; flechas ← → cambian de foto).
+  function initGallery() {
+    const dlg = document.createElement('dialog');
+    dlg.className = 'gallery';
+    dlg.innerHTML = `
+      <button type="button" class="gallery-close" aria-label="Cerrar">×</button>
+      <img alt="">
+      <div class="gallery-nav">
+        <button type="button" class="carousel-arrow gallery-prev" aria-label="Foto anterior">←</button>
+        <span class="gallery-count" aria-live="polite"></span>
+        <button type="button" class="carousel-arrow gallery-next" aria-label="Foto siguiente">→</button>
+      </div>`;
+    document.body.appendChild(dlg);
+    const img = dlg.querySelector('img');
+    let photos = [], k = 0, title = '';
+    const show = () => {
+      img.src = asset(photos[k].src);
+      img.alt = `${title} — foto ${k + 1} de ${photos.length}`;
+      dlg.querySelector('.gallery-count').textContent = `${k + 1} / ${photos.length}`;
+    };
+    const move = (d) => { k = (k + d + photos.length) % photos.length; show(); };
+    dlg.querySelector('.gallery-prev').addEventListener('click', () => move(-1));
+    dlg.querySelector('.gallery-next').addEventListener('click', () => move(1));
+    dlg.querySelector('.gallery-close').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });   // clic fuera de la foto
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') move(1);
+      if (e.key === 'ArrowLeft') move(-1);
+    });
+    // Delegado: sirve para el carrusel y para la cuadrícula (que se redibuja al filtrar).
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.obra-gallery-btn');
+      if (!btn) return;
+      const o = OBRAS[+btn.dataset.obra];
+      photos = o.photos; title = o.title; k = 0;
+      show();
+      dlg.showModal();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initGrid();
+    initGallery();
     const track = document.getElementById('obras-track');
     if (!track) return;
     const prev = document.getElementById('obras-prev');
