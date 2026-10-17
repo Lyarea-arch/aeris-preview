@@ -2,20 +2,36 @@
 // Fotos reales: `img` (portada) y, opcional, `photos` (galería a pantalla completa).
 // Fotos en obras/: versión grande + `-sm` (carrusel), sin metadatos (GPS) — ver README.
 // Sin `img` se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
-// La primera obra es REAL; las demás son de EJEMPLO hasta tener obras reales de Aeris.
+// Las obras con fotos son REALES; las ilustradas son de EJEMPLO hasta tener más obras de Aeris.
+// Año o lugar vacío = no se muestra (no inventamos datos que no tenemos).
 
 (function () {
   // Fotos: en la demo de un solo archivo van incrustadas (AERIS_PIEZA_IMG, por ruta).
   const asset = (src) => (window.AERIS_PIEZA_IMG && window.AERIS_PIEZA_IMG[src]) || src;
-  const AUTO = Array.from({ length: 9 }, (_, i) => 'obras/automocion-' + String(i + 1).padStart(2, '0'));
+  // gallery('amazon', 4) → portada + fotos obras/amazon-01…04 (.jpg grande, -sm.jpg carrusel)
+  function gallery(prefix, n) {
+    const paths = Array.from({ length: n }, (_, i) => 'obras/' + prefix + '-' + String(i + 1).padStart(2, '0'));
+    return { img: paths[0] + '-sm.jpg', photos: paths.map((p) => ({ src: p + '.jpg', thumb: p + '-sm.jpg' })) };
+  }
 
   const OBRAS = [
-    // Obra REAL (el cliente no permite publicar su nombre).
+    // Obras REALES. Automoción y el centro de innovación: el cliente no permite publicar el nombre.
     { cat: 'Automoción', year: '2026', title: 'Planta de automoción — climatización de naves y cubierta', place: 'Planta industrial',
       text: 'Un reto logístico y humano: grandes redes de conductos en cubierta y en el interior de las naves, con montaje a 15 m de altura. Una vez más, el equipo respondió con profesionalidad.',
       specs: '40.000 m² de chapa · 12.000 m² en aluminio · 9 ml de tubo circular · montaje a 15 m',
-      img: AUTO[0] + '-sm.jpg',
-      photos: AUTO.map((p) => ({ src: p + '.jpg', thumb: p + '-sm.jpg' })) },
+      ...gallery('automocion', 9) },
+    { cat: 'Terciario', year: '', title: 'Centro de innovación — conductos circulares en atrio', place: '',
+      text: 'El reto fue la dinámica de montaje: había que trabajar en varias zonas a la vez y en un plazo muy corto, así que empleamos maquinaria industrial de gran tonelaje. Terminamos en los plazos marcados por la dirección de obra, con un equipo que superó las expectativas.',
+      specs: 'Conducto circular helicoidal de gran diámetro · montaje con grúa en varias zonas a la vez',
+      ...gallery('innovacion', 6) },
+    { cat: 'Logística', year: '', title: 'Amazon Madrid — red de conductos de chapa', place: 'Madrid',
+      text: 'Fabricación y montaje de la red de conductos de chapa galvanizada de una gran nave logística, que alimenta la distribución textil de la nave.',
+      specs: 'Conducto rectangular · chapa galvanizada · fabricación y montaje',
+      ...gallery('amazon', 4) },
+    { cat: 'Taller', year: '', title: 'Fabricación en taller — piezas en serie', place: 'Taller Aeris · Ajalvir',
+      text: 'Piezas circulares fabricadas en serie en nuestro taller de Ajalvir, con las juntas selladas y listas para salir hacia la obra.',
+      specs: 'Chapa galvanizada · juntas selladas · fabricación en serie',
+      ...gallery('taller', 2) },
     { cat: 'Industrial', year: '[Año]', title: 'Nave logística — red de impulsión', place: '[Localidad]',
       text: 'Red de impulsión y retorno para una nave de almacenaje: tramos rectos, codos y derivaciones fabricados a medida y entregados por fases.',
       specs: 'Conducto rectangular · galvanizado 0,8 mm', art: 'rect' },
@@ -102,7 +118,7 @@
       <article class="obra" role="group" aria-roledescription="obra" aria-label="${i + 1} de ${OBRAS.length}">
         <div class="obra-media">${media}</div>
         <div class="obra-body">
-          <div class="obra-meta"><span class="obra-cat">${o.cat}</span><span>${o.place} · ${o.year}</span></div>
+          <div class="obra-meta"><span class="obra-cat">${o.cat}</span><span>${[o.place, o.year].filter(Boolean).join(" · ")}</span></div>
           <h3>${o.title}</h3>
           <p>${o.text}</p>
           <div class="obra-specs">${o.specs}</div>
