@@ -527,6 +527,26 @@ section[id] { scroll-margin-top: 72px; }
 .map-note { font-size: 14px; line-height: 1.55; }
 .map-consent .btn { margin-top: 8px; }
 
+/* ── Botón «volver arriba» (todas las páginas, lo crea nav.js) ── */
+.to-top { position: fixed; right: 20px; bottom: 20px; z-index: 15; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.18); background: #0E1C26; color: #FFFFFF; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(14, 28, 38, 0.28); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.25s, transform 0.25s, background 0.2s; }
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: #0B6C88; }
+
+/* ── Índice de secciones de la portada (como BMW), solo escritorio ── */
+.section-index { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 15; display: flex; flex-direction: column; gap: 6px; }
+.section-index a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 3px 0; }
+.si-dot { width: 10px; height: 10px; flex-shrink: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.9); box-shadow: 0 0 0 1px rgba(14, 28, 38, 0.45); transition: all 0.2s; }
+.section-index a:hover .si-dot { background: #4CC3E6; }
+.section-index a.is-active .si-dot { width: 16px; height: 16px; margin-right: -3px; background: transparent; box-shadow: 0 0 0 2px #FFFFFF, inset 0 0 0 2px #0B6C88, 0 0 0 3px rgba(14, 28, 38, 0.35); }
+.si-label { padding: 3px 8px; border-radius: 2px; background: #0E1C26; color: #FFFFFF; font-size: 13px; font-weight: 600; white-space: nowrap;
+  opacity: 0; transform: translateX(6px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+.section-index:hover .si-label, .section-index a:focus-visible .si-label { opacity: 1; transform: none; }
+.section-index a.is-active .si-label { background: #0B6C88; }
+@media (min-width: 1101px) { .has-section-index .to-top { display: none; } }
+@media (max-width: 1100px) { .section-index { display: none; } }
+
 @media (max-width: 1360px) {
   .nav { gap: 28px; padding-left: 40px; padding-right: 40px; }
   .nav-links { gap: 22px; font-size: 14px; }
