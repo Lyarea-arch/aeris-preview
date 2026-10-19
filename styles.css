@@ -507,6 +507,26 @@ section[id] { scroll-margin-top: 72px; }
 .tema-claro .form-error { color: #B42318; }
 .tema-claro .btn-primary, .tema-claro .quote-form button[type=submit]:not([disabled]) { color: #FFFFFF; }
 
+/* Mockup „más luz” (Nicu): variante gris para alternar con las secciones blancas. */
+.tema-claro.fondo-gris { background: var(--light-bg); }
+/* Cabecera: negro con tinte azul (no negro puro), a juego con el azul de la marca. */
+.nav { --nav-bg: #0E1C26; background: var(--nav-bg); border-bottom-color: #1C3140; }
+.tema-claro.page-hero { border-bottom-color: var(--line-2); }
+
+/* Página Contacto: mapa de Google cargado solo al pulsar (ver contacto.js). */
+.contact-page { align-items: stretch; }   /* el mapa crece hasta la altura de la columna de datos + foto */
+/* La columna de datos va alineada a la izquierda (la regla general de .section-split la centraba). */
+.section-split.contact-page > .contact-info { align-items: flex-start; }
+/* Foto de las naves bajo los datos de contacto (de momento, el marcador rayado de .about-photo). */
+.naves-photo { display: flex; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-top: 8px; }
+.map { min-height: 420px; border: 1px solid var(--line-2); border-radius: 2px; background: #FFFFFF; display: flex; overflow: hidden; }
+.map iframe { width: 100%; min-height: 420px; border: 0; display: block; }
+.map-consent { margin: auto; max-width: 380px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; color: var(--fg-dim); }
+.map-consent svg { color: var(--accent); }
+.map-title { font-weight: 600; font-size: 17px; color: var(--fg); }
+.map-note { font-size: 14px; line-height: 1.55; }
+.map-consent .btn { margin-top: 8px; }
+
 @media (max-width: 1360px) {
   .nav { gap: 28px; padding-left: 40px; padding-right: 40px; }
   .nav-links { gap: 22px; font-size: 14px; }
@@ -516,7 +536,7 @@ section[id] { scroll-margin-top: 72px; }
   .nav-toggle { display: flex; }
   .nav .brand { margin-right: auto; }
   .nav-menu { display: none; }
-  .nav.nav-open .nav-menu { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; padding: 8px 24px 20px; background: var(--ink); border-bottom: 1px solid var(--line-2); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+  .nav.nav-open .nav-menu { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; padding: 8px 24px 20px; background: var(--nav-bg); border-bottom: 1px solid var(--line-2); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
   .nav-menu .nav-links { flex-direction: column; gap: 0; font-size: 17px; }
   .nav-menu .nav-links a, .nav-menu .nav-portal { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
   .nav-links a[aria-current="page"] { box-shadow: none; color: var(--accent); }
