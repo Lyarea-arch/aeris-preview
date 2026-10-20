@@ -4,6 +4,7 @@
 // Sin `img` se dibuja una ilustración de reserva (`art`: rect | insul | spiral | hood | fittings).
 // Todas las obras son REALES (con fotos o, si aún no hay, ilustración + «Fotos próximamente»).
 // Para añadir una: ver el MODELO al final de la lista.
+// `home: true` = sale también en el carrusel de la página de inicio (3–6 obras; el resto solo en /obras).
 // Año o lugar vacío = no se muestra (no inventamos datos que no tenemos).
 
 (function () {
@@ -18,27 +19,27 @@
     { cat: 'Automoción', year: '2026', title: 'Planta de automoción — climatización de naves y cubierta', place: 'Planta industrial',
       text: 'Un reto logístico y humano: grandes redes de conductos en cubierta y en el interior de las naves, con montaje a 15 m de altura. Una vez más, el equipo respondió con profesionalidad.',
       specs: '40.000 m² de chapa · 12.000 m² en aluminio · 9 ml de tubo circular · montaje a 15 m',
-      ...gallery('automocion', 9) },
+      ...gallery('automocion', 9), home: true },
     { cat: 'Automoción', year: '', title: 'Nave de automoción en Navarra — climatización', place: 'Navarra',
       text: 'Climatización de una nave para la automoción en Navarra. Sin ninguna complicación: otro día en la oficina.',
       specs: 'Conducto circular helicoidal y rectangular · montaje en altura con plataformas elevadoras',
-      ...gallery('navarra', 14) },
+      ...gallery('navarra', 14), home: true },
     { cat: 'Terciario', year: '', title: 'Centro de innovación — conductos circulares en atrio', place: '',
       text: 'El reto fue la dinámica de montaje: había que trabajar en varias zonas a la vez y en un plazo muy corto, así que empleamos maquinaria industrial de gran tonelaje. Terminamos en los plazos marcados por la dirección de obra, con un equipo que superó las expectativas.',
       specs: 'Conducto circular helicoidal de gran diámetro · montaje con grúa en varias zonas a la vez',
-      ...gallery('innovacion', 8) },
+      ...gallery('innovacion', 8), home: true },
     { cat: 'Logística', year: '', title: 'Amazon Madrid — red de conductos de chapa', place: 'Madrid',
       text: 'Fabricación y montaje de la red de conductos de chapa galvanizada de una gran nave logística, que alimenta la distribución textil de la nave.',
       specs: 'Conducto rectangular · chapa galvanizada · fabricación y montaje',
-      ...gallery('amazon', 4) },
+      ...gallery('amazon', 4), home: true },
     { cat: 'Hospital', year: '', title: 'Hospital Gregorio Marañón — red de conductos en cubierta', place: 'Madrid',
       text: 'Red de conductos en la cubierta del Hospital General Universitario Gregorio Marañón: tramos rectangulares de gran sección y piezas a medida, parte de la red con aislamiento.',
       specs: 'Conducto rectangular de gran sección · aislamiento · piezas a medida',
-      ...gallery('maranon', 5) },
+      ...gallery('maranon', 5), home: true },
     { cat: 'Industrial', year: '', title: 'Schweppes Toledo — tótems de difusión', place: 'Toledo',
       text: 'Tótems de difusión fabricados por nosotros para la planta de Schweppes en Toledo: piezas de chapa a medida, acabadas en blanco y con toberas para repartir el aire en la nave de producción.',
       specs: 'Fabricación propia · chapa con acabado blanco · toberas de impulsión',
-      ...gallery('toledo', 7) },
+      ...gallery('toledo', 7), home: true },
     { cat: 'Taller', year: '', title: 'Fabricación en taller — piezas en serie', place: 'Taller Aeris · Ajalvir',
       text: 'Piezas circulares fabricadas en serie en nuestro taller de Ajalvir, con las juntas selladas y listas para salir hacia la obra.',
       specs: 'Chapa galvanizada · juntas selladas · fabricación en serie',
@@ -234,7 +235,11 @@
     const counter = document.getElementById('obras-counter');
     const dots = document.getElementById('obras-dots');
 
-    track.innerHTML = OBRAS.map(slideHtml).join('');
+    // Solo las obras con `home: true`; `i` (índice en OBRAS) sigue sirviendo para abrir su galería.
+    const home = OBRAS.map((o, i) => ({ o, i })).filter(({ o }) => o.home);
+    track.innerHTML = home
+      .map(({ o, i }, k) => slideHtml(o, i).replace(`aria-label="${i + 1} de ${OBRAS.length}"`, `aria-label="${k + 1} de ${home.length}"`))
+      .join('');
     const slides = [...track.children];
 
     dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Ir a la obra ${i + 1}"></button>`).join('');
