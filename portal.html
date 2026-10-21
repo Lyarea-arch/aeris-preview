@@ -3,76 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aeris Factory – Portal de cliente</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://aerisfactory.es/portal.html">
+<title>Aeris Factory – Área de cliente</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- El área de cliente es el portal de DuctFlow. Esta página solo conserva la dirección antigua
+     (/portal.html) y redirige; GitHub Pages no permite redirecciones en el servidor. Sin JS. -->
+<meta http-equiv="refresh" content="0; url=https://ductflow.app/portal.html?o=aerisfactory">
+<link rel="canonical" href="https://ductflow.app/portal.html?o=aerisfactory">
 <link rel="stylesheet" href="styles.css?v=eae1e8b7">
 </head>
 <body>
 
-<div class="portal-login" id="portal-login">
+<div class="portal-login">
   <div class="login-card">
     <a href="index.html" class="brand" aria-label="Aeris, volver a la web">
       <svg width="30" height="23" viewBox="0 0 34 26" fill="none" stroke="#4CC3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5 C10 -1 16 11 32 5"/><path d="M2 13 C10 7 16 19 32 13"/><path d="M2 21 C10 15 16 27 32 21"/></svg>
       <span>AERIS</span>
     </a>
-    <div class="eyebrow">Portal de cliente</div>
-    <h1>Sigue tus pedidos</h1>
-
-    <form id="login-form" class="login-form">
-      <p>Escribe tu correo y te enviamos un enlace para entrar. Sin contraseñas.</p>
-      <label>Correo electrónico
-        <input type="email" id="login-email" autocomplete="email" required placeholder="tu@empresa.es">
-      </label>
-      <button type="submit" class="btn btn-accent">Enviarme el enlace</button>
-    </form>
-
-    <div id="login-sent" class="login-sent" hidden>
-      <p>Si <b id="login-sent-email"></b> es el correo de un cliente de Aeris, te hemos enviado un enlace para entrar. Caduca en 15 minutos.</p>
-      <button type="button" id="login-open-link" class="btn btn-accent">Abrir el enlace (demo)</button>
-      <button type="button" id="login-retry" class="link-btn">Usar otro correo</button>
-    </div>
-
-    <a href="index.html" class="login-back">← Volver a la web</a>
+    <div class="eyebrow">Área de cliente</div>
+    <h1>Te llevamos a tu área de cliente…</h1>
+    <p class="muted">Si no se abre sola en unos segundos, pulsa el botón.</p>
+    <a href="https://ductflow.app/portal.html?o=aerisfactory" class="btn btn-accent btn-lg">Ir al área de cliente</a>
   </div>
 </div>
 
-<div class="portal-shell" id="portal-app" hidden>
-  <aside class="portal-sidebar">
-    <a href="index.html" class="brand" aria-label="Aeris, volver a la web">
-      <svg width="30" height="23" viewBox="0 0 34 26" fill="none" stroke="#4CC3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5 C10 -1 16 11 32 5"/><path d="M2 13 C10 7 16 19 32 13"/><path d="M2 21 C10 15 16 27 32 21"/></svg>
-      <span>AERIS</span>
-    </a>
-    <ul class="portal-nav">
-      <li class="active">Pedidos</li>
-      <li class="soon">Facturas <span class="soon-tag">Próximamente</span></li>
-    </ul>
-    <div class="portal-sidebar-foot">Gestión de pedidos con Ductflow</div>
-  </aside>
-
-  <main class="portal-main">
-    <div class="portal-head">
-      <div>
-        <div class="eyebrow">Portal de cliente</div>
-        <h1>Mis pedidos</h1>
-      </div>
-      <div class="portal-head-right">
-        <span class="company-chip">Instalaciones Ejemplo SL</span>
-        <button type="button" id="logout-btn" class="link-btn">Cerrar sesión</button>
-      </div>
-    </div>
-
-    <p class="portal-alert" id="portal-alert" role="status" hidden></p>
-
-    <div class="tabs" id="tabs" role="tablist" aria-label="Filtrar pedidos"></div>
-
-    <div class="portal-body">
-      <div class="order-list" id="order-list"></div>
-      <section class="order-detail" id="order-detail" aria-label="Detalle del pedido"></section>
-    </div>
-  </main>
-</div>
-
-<script src="portal.js?v=43d989bf"></script>
 </body>
 </html>
