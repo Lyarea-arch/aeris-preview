@@ -351,6 +351,9 @@ section[id] { scroll-margin-top: 72px; }
 .quote-form button[type=submit] { height: 56px; border: 0; border-radius: 2px; font: 600 16px 'IBM Plex Sans', sans-serif; cursor: pointer; }
 .quote-form button[disabled] { background: var(--line-2); color: var(--fg-dim2); cursor: not-allowed; }
 .fine-print { font-size: 13px; line-height: 1.5; color: var(--fg-dim2); }
+.powered-by { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-2); font-size: 12px; letter-spacing: 0.04em; color: var(--fg-dim2); }
+.powered-by a { color: var(--fg); font-weight: 600; text-decoration: none; }
+.powered-by a:hover { color: var(--accent); }
 .form-error { margin: 0; font-size: 14px; color: #FF8A7A; }
 
 .sent-panel { background: var(--ink-2); border: 1px solid var(--accent); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
