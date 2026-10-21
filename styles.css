@@ -199,13 +199,16 @@ section[id] { scroll-margin-top: 72px; }
 @media (prefers-reduced-motion: reduce) { .refs-row .refs-track { animation: none !important; } }
 
 /* cards */
-.cards { margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-.card { background: #fff; border: 1px solid var(--light-line); border-radius: 2px; display: flex; flex-direction: column; }
-.card-img { height: 220px; background: #E6EBEE; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.card-body { padding: 28px 28px 32px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-.card-body h3 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 22px; }
-.card-body p { font-size: 15px; line-height: 1.55; color: var(--light-dim); flex-grow: 1; }
+.cards { margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+/* fără chenar/fundal: poza + textul direct pe fundalul secțiunii (ca la BMW) */
+.card { display: flex; flex-direction: column; }
+.card-img { aspect-ratio: 3 / 2; background: #E6EBEE; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.card:hover .card-img img { transform: scale(1.04); }
+.card-body { padding-top: 24px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+.card-body h3 { font-weight: 400; font-size: 24px; line-height: 1.2; }
+.card-body p { font-size: 16px; line-height: 1.6; color: var(--light-dim); flex-grow: 1; }
+.card-body .link-arrow { margin-top: 8px; }
 
 /* obras (carrusel) */
 .obras-section { border-top: 1px solid var(--line); overflow: hidden; }
