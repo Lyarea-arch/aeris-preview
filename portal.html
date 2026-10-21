@@ -8,9 +8,10 @@
 <!-- El área de cliente es el portal de DuctFlow. Esta página solo conserva la dirección antigua
      (/portal.html) y redirige; GitHub Pages no permite redirecciones en el servidor.
      Sin JS inline (CSP): solo portal-redirect.js, externo. -->
-<!-- Primero el script (pasa el #token=… del email); luego el meta refresh como respaldo. -->
-<script src="portal-redirect.js?v=10107a7f"></script>
-<meta http-equiv="refresh" content="0; url=https://ductflow.app/portal.html?o=aerisfactory">
+<!-- Con JS redirige portal-redirect.js (conserva el #token=… del email). El meta refresh solo
+     va en <noscript>: si actuaran los dos, podía ganar el meta refresh y perderse el token. -->
+<script src="portal-redirect.js?v=4fce0f96"></script>
+<noscript><meta http-equiv="refresh" content="0; url=https://ductflow.app/portal.html?o=aerisfactory"></noscript>
 <link rel="canonical" href="https://ductflow.app/portal.html?o=aerisfactory">
 <link rel="stylesheet" href="styles.css?v=eae1e8b7">
 </head>

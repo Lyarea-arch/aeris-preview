@@ -1,7 +1,7 @@
 // /portal.html → área de cliente de DuctFlow, CONSERVANDO el #token=… del enlace del email.
-// El meta refresh de portal.html pierde el fragmento (#…); este script, que se ejecuta antes,
-// lo pasa entero. Sin JS, el meta refresh sigue funcionando (pero sin el token).
+// Redirige SIEMPRE desde aquí (con el fragmento si lo hay). El meta refresh de portal.html va
+// dentro de <noscript>: solo actúa sin JS. Si estuvieran los dos activos, el meta refresh podía
+// ganar la carrera y perder el token → el cliente volvía al login (21 oct 2026).
 (function () {
-  var url = 'https://ductflow.app/portal.html?o=aerisfactory';
-  if (location.hash) location.replace(url + location.hash);
+  location.replace('https://ductflow.app/portal.html?o=aerisfactory' + (location.hash || ''));
 })();
