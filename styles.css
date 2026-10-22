@@ -181,18 +181,18 @@ section[id] { scroll-margin-top: 72px; }
 /* Cifra siempre abajo: alineadas aunque una etiqueta tenga 1 línea y otra 2 (el hueco queda arriba). */
 .refs-stats dt { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim2); max-width: 130px; line-height: 1.4; }
 .refs-stats dd { margin: auto 0 0; padding-top: 6px; font-family: 'Archivo', sans-serif; font-weight: 300; font-stretch: 112%; font-size: 48px; line-height: 1; color: var(--accent); }
-.refs-rows { margin-top: 56px; display: flex; flex-direction: column; gap: 16px; }
+.refs-rows { margin-top: 56px; display: flex; flex-direction: column; gap: 28px; }
 .refs-row { display: flex; overflow: hidden; padding: 0 80px; }
-.refs-track { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
-.ref-item { display: flex; align-items: center; gap: 16px; padding: 18px 26px 18px 18px; background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 2px; white-space: nowrap; transition: border-color 0.2s; }
-.ref-item:hover { border-color: var(--line-3); }
-.ref-icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #12323D; color: var(--accent); }
-.ref-text { display: flex; flex-direction: column; gap: 3px; }
-.ref-name { font-size: 17px; font-weight: 600; color: var(--fg); }
-.ref-meta { font-size: 13px; color: var(--fg-dim2); }
+.refs-track { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0; }
+/* doar tipografie (fără cutii/iconițe): numele mari, separate de o linie fină */
+.ref-item { display: flex; align-items: center; padding: 6px 40px; border-left: 1px solid var(--line-2); white-space: nowrap; }
+.ref-text { display: flex; flex-direction: column; gap: 6px; }
+.ref-name { font-family: 'Archivo', sans-serif; font-weight: 300; font-stretch: 112%; font-size: 26px; line-height: 1.15; color: var(--fg-dim3); transition: color 0.2s; }
+.ref-item:hover .ref-name { color: var(--fg); }
+.ref-meta { font-size: 13px; letter-spacing: 0.06em; color: var(--fg-dim2); }
 /* En movimiento (JS activo y sin "reducir movimiento"): bucle continuo con bordes difuminados. */
 .refs-row.is-moving { padding: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.refs-row.is-moving .refs-track { flex-wrap: nowrap; flex-shrink: 0; padding-right: 16px; animation: refs-scroll var(--refs-duration, 60s) linear infinite; }
+.refs-row.is-moving .refs-track { flex-wrap: nowrap; flex-shrink: 0; animation: refs-scroll var(--refs-duration, 60s) linear infinite; }
 .refs-row-rev.is-moving .refs-track { animation-direction: reverse; }
 .refs-rows:hover .refs-track, .refs-rows:focus-within .refs-track { animation-play-state: paused; }
 @keyframes refs-scroll { to { transform: translateX(-100%); } }
@@ -210,6 +210,17 @@ section[id] { scroll-margin-top: 72px; }
 .card-body p { font-size: 16px; line-height: 1.6; color: var(--light-dim); flex-grow: 1; }
 .card-body .link-arrow { margin-top: 8px; }
 
+/* banda de foto a todo el ancho (como BMW): texto abajo a la izquierda sobre degradado */
+.banda-foto { position: relative; height: 640px; overflow: hidden; background: var(--ink-4); display: flex; align-items: flex-end; }
+.banda-foto > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.banda-foto::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(8, 11, 13, 0.88) 0%, rgba(8, 11, 13, 0.45) 40%, rgba(8, 11, 13, 0) 70%),
+              linear-gradient(90deg, rgba(8, 11, 13, 0.55) 0%, rgba(8, 11, 13, 0) 55%); }
+.banda-copy { position: relative; z-index: 1; padding: 0 80px 80px; }
+.banda-copy h2 { margin-top: 16px; font-size: 56px; line-height: 1.05; color: #fff; }
+.banda-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.banda-actions .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.5); background: rgba(8, 11, 13, 0.4); }
+
 /* obras (carrusel) */
 .obras-section { border-top: 1px solid var(--line); overflow: hidden; }
 .carousel-nav { display: flex; align-items: center; gap: 12px; }
@@ -223,7 +234,11 @@ section[id] { scroll-margin-top: 72px; }
 }
 .obras-track::-webkit-scrollbar { display: none; }
 .obras-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-.obra { flex: 0 0 42%; scroll-snap-align: start; background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 2px; display: flex; flex-direction: column; }
+/* fără chenar/fundal, ca la cardurile din „Gama” (doar în caruselul de pe prima pagină) */
+.obra { flex: 0 0 42%; scroll-snap-align: start; display: flex; flex-direction: column; }
+/* Pagina Obras: multe carduri pe fundal gri → cu chenar și fundal alb, altfel textul se pierde. */
+.obras-grid .obra { background: var(--ink); border: 1px solid var(--line-2); border-radius: 2px; }
+.obras-grid .obra-body { padding: 28px; }
 .obra-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink-4); }
 .obra-media svg, .obra-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .obra:hover .obra-media svg, .obra:hover .obra-media img { transform: scale(1.03); }
@@ -240,10 +255,10 @@ section[id] { scroll-margin-top: 72px; }
 .gallery-count { min-width: 3.5em; text-align: center; }
 .gallery-close { position: absolute; top: 12px; right: 16px; width: 44px; height: 44px; font-size: 30px; line-height: 1; color: #fff; background: none; border: 0; cursor: pointer; }
 .obra-tag { position: absolute; left: 16px; top: 16px; padding: 5px 10px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(10, 14, 16, 0.75); color: var(--fg-dim3); border: 1px solid var(--line-3); }
-.obra-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+.obra-body { padding-top: 24px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
 .obra-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--fg-dim2); }
 .obra-cat { padding: 4px 10px; background: #12323D; color: #7FD3EC; font-weight: 600; border-radius: 2px; }
-.obra-body h3 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.3; }
+.obra-body h3 { font-weight: 400; font-size: 24px; line-height: 1.25; }
 .obra-body p { font-size: 15px; line-height: 1.6; color: var(--fg-dim); flex-grow: 1; }
 .obra-specs { font-size: 14px; color: var(--fg-dim3); padding-top: 12px; border-top: 1px solid var(--line-2); }
 .obra-body .link-arrow { align-self: flex-start; padding: 6px 0 0; }
@@ -501,9 +516,7 @@ section[id] { scroll-margin-top: 72px; }
 .tema-claro .pill.active { color: #FFFFFF; }
 .tema-claro .piece-option:hover, .tema-claro .piece-option.active { color: var(--fg); }
 .tema-claro .piece-list { box-shadow: 0 16px 40px rgba(20, 25, 29, 0.14); }
-.tema-claro .ref-icon { background: #E1F1F6; }
 .tema-claro .obra-cat { background: #E1F1F6; color: #0B6C88; }
-.tema-claro .obra { background: #FFFFFF; }
 /* Ilustraciones de las obras de ejemplo: dibujadas en oscuro → invertidas para fondo claro. */
 .tema-claro .obra-media > svg { filter: invert(1) hue-rotate(180deg) brightness(0.97); }
 .tema-claro .obra-media { background: #E9EEF1; }
@@ -516,7 +529,14 @@ section[id] { scroll-margin-top: 72px; }
 /* Mockup „más luz” (Nicu): variante gris para alternar con las secciones blancas. */
 .tema-claro.fondo-gris { background: var(--light-bg); }
 /* Cabecera: negro con tinte azul (no negro puro), a juego con el azul de la marca. */
-.nav { --nav-bg: #0E1C26; background: var(--nav-bg); border-bottom-color: #1C3140; }
+.nav { --nav-bg: #0E1C26; background: var(--nav-bg); border-bottom-color: #1C3140; transition: background-color 0.3s, border-color 0.3s; }
+/* Portada (como BMW): la foto del hero sube bajo la cabecera, que es transparente hasta que se
+   baja de la foto. Lo activa nav.js (.nav-over en <body>); sin JS, cabecera oscura de siempre. */
+.nav-over .hero { margin-top: -72px; height: 852px; }   /* 780 + cei 72 px de sub cabecera: altfel butoanele intrau sub cifre */
+.nav-over .hero-copy { padding-top: 184px; }
+.nav-over .hero::before { content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: 0; height: 160px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(8, 11, 13, 0.6), rgba(8, 11, 13, 0)); }
+.nav.nav-clear:not(.nav-open) { background: transparent; border-bottom-color: transparent; }
 .tema-claro.page-hero { border-bottom-color: var(--line-2); }
 
 /* Página Contacto: mapa de Google cargado solo al pulsar (ver contacto.js). */
@@ -573,7 +593,7 @@ section[id] { scroll-margin-top: 72px; }
   .legal { grid-template-columns: 1fr; gap: 32px; }
   .legal-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
   .hero-copy h1 { font-size: 64px; }
-  .hero { height: auto; }   /* textul + cifrele dau inaltimea; altfel 780px pot taia banda */
+  .hero, .nav-over .hero { height: auto; }   /* textul + cifrele dau inaltimea; altfel 780px pot taia banda */
   .hero-copy { padding-bottom: 48px; }
   .hero-photo img { object-position: 70% 60%; }
   .hero::after { background: linear-gradient(180deg, rgba(8, 11, 13, 0.85) 0%, rgba(8, 11, 13, 0.55) 45%, rgba(8, 11, 13, 0.35) 70%, rgba(8, 11, 13, 0.9) 100%); }
@@ -591,6 +611,8 @@ section[id] { scroll-margin-top: 72px; }
   .portal-sidebar { width: 200px; }
   .obras-track { margin-right: -24px; padding-right: 24px; }
   .refs-head, .refs-row { padding-left: 24px; padding-right: 24px; }
+  .banda-copy { padding: 0 24px 56px; }
+  .banda-copy h2 { font-size: 44px; }
   .obra { flex-basis: 64%; }
   .about { grid-template-columns: 1fr; gap: 48px; }
   .timeline { grid-template-columns: 1fr 1fr; row-gap: 48px; }
@@ -599,6 +621,11 @@ section[id] { scroll-margin-top: 72px; }
   .cards { grid-template-columns: 1fr; }
   .hero-copy h1 { font-size: 48px; }
   .section h2 { font-size: 36px; }
+  .banda-foto { height: 560px; }
+  .banda-copy { padding: 0 16px 48px; }
+  .banda-copy h2 { font-size: 34px; }
+  .ref-item { padding: 4px 24px; }
+  .ref-name { font-size: 20px; }
   .footer-grid { grid-template-columns: 1fr; }
   .portal-shell { flex-direction: column; }
   .portal-sidebar { width: auto; flex-direction: row; align-items: center; padding: 16px; gap: 16px; overflow-x: auto; }

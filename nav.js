@@ -16,6 +16,21 @@
   });
 })();
 
+// Portada: cabecera transparente sobre la foto del hero; oscura en cuanto se empieza a bajar
+// (si no, los enlaces del menú se montarían sobre el titular).
+(function () {
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('.nav');
+    const hero = document.querySelector('.hero');
+    if (!nav || !hero) return;
+    document.body.classList.add('nav-over');
+    const update = () => nav.classList.toggle('nav-clear', window.scrollY < 40);
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+})();
+
 // Botón «volver arriba»: aparece tras bajar una pantalla. En la portada, en escritorio,
 // lo sustituye el índice de secciones (ver CSS: .has-section-index).
 (function () {
