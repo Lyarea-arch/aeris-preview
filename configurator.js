@@ -315,7 +315,7 @@
     const canSend = state.items.length > 0 && name.length > 0 && emailOk && consent && !state.sending;
     const btn = document.getElementById('submit-btn');
     btn.disabled = !canSend;
-    btn.textContent = state.sending ? 'Enviando…' : 'Enviar solicitud a Aeris';
+    btn.textContent = state.sending ? 'Enviando…' : 'Enviar solicitud a Aeris Factory';
     const err = document.getElementById('form-error');
     err.hidden = !state.error;
     err.textContent = state.error;

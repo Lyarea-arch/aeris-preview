@@ -40,7 +40,7 @@
       text: 'Tótems de difusión fabricados por nosotros para la planta de Schweppes en Toledo: piezas de chapa a medida, acabadas en blanco y con toberas para repartir el aire en la nave de producción.',
       specs: 'Fabricación propia · chapa con acabado blanco · toberas de impulsión',
       ...gallery('toledo', 7), home: true },
-    { cat: 'Taller', year: '', title: 'Fabricación en taller — piezas en serie', place: 'Taller Aeris · Ajalvir',
+    { cat: 'Taller', year: '', title: 'Fabricación en taller — piezas en serie', place: 'Taller Aeris Factory · Ajalvir',
       text: 'Piezas circulares fabricadas en serie en nuestro taller de Ajalvir, con las juntas selladas y listas para salir hacia la obra.',
       specs: 'Chapa galvanizada · juntas selladas · fabricación en serie',
       ...gallery('taller', 2) },

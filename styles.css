@@ -64,6 +64,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 }
 .brand { display: flex; align-items: center; gap: 14px; }
 .brand span { font-family: 'Archivo', sans-serif; font-weight: 700; font-stretch: 125%; font-size: 20px; letter-spacing: 0.22em; }
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-name small { margin-top: 6px; font-size: 10px; font-weight: 600; font-stretch: 110%; letter-spacing: 0.72em; color: var(--accent); }
 .nav-links { flex-grow: 1; display: flex; gap: 32px; font-size: 15px; color: var(--fg-dim3); white-space: nowrap; }
 .nav-links a:hover { color: #fff; }
 .nav-portal { font-size: 15px; color: var(--fg-dim3); white-space: nowrap; }
@@ -633,6 +635,10 @@ section[id] { scroll-margin-top: 72px; }
   .portal-sidebar-foot { display: none; }
   /* nav: brand + CTA; „Acceso clientes" sigue en el hero y el footer */
   .nav { gap: 12px; padding-left: 16px; padding-right: 16px; justify-content: space-between; }
+  .nav .brand { gap: 10px; }
+  .nav .brand svg { width: 44px; height: 26px; }
+  .nav .brand-name { font-size: 17px; }
+  .nav .brand-name small { font-size: 8.5px; margin-top: 5px; }
   .nav.nav-open .nav-menu { padding-left: 16px; padding-right: 16px; }
   .page-hero { padding: 56px 16px 40px; }
   .page-hero h1 { font-size: 40px; }
