@@ -459,6 +459,22 @@ window.AERIS_PIEZAS = [
       }
     ],
     "noUT": true,
+    "img3d": {
+      "thumb": "piezas/3d/vierteaguas.webp?v=c80dd5aa",
+      "sketch": "piezas/3d/vierteaguas-sketch.webp?v=c3af88b0",
+      "overlay": [
+        {
+          "key": "A",
+          "left": "64.4%",
+          "top": "65.9%"
+        },
+        {
+          "key": "B",
+          "left": "61.4%",
+          "top": "65.2%"
+        }
+      ]
+    },
     "formula": function (v) {
         return (v.A + v.B) * 3 / 1_000;
     }
@@ -534,6 +550,22 @@ window.AERIS_PIEZAS = [
       }
     ],
     "noUT": true,
+    "img3d": {
+      "thumb": "piezas/3d/tapa.webp?v=4206a69d",
+      "sketch": "piezas/3d/tapa-sketch.webp?v=e8598431",
+      "overlay": [
+        {
+          "key": "A",
+          "left": "76.9%",
+          "top": "78.4%"
+        },
+        {
+          "key": "B",
+          "left": "98.3%",
+          "top": "43.6%"
+        }
+      ]
+    },
     "formula": function (v) {
         return (v.A + v.B) * 0.8 / 1_000;
     }
@@ -554,6 +586,22 @@ window.AERIS_PIEZAS = [
       }
     ],
     "noUT": true,
+    "img3d": {
+      "thumb": "piezas/3d/deflector.webp?v=4a993f34",
+      "sketch": "piezas/3d/deflector-sketch.webp?v=5be9da48",
+      "overlay": [
+        {
+          "key": "L",
+          "left": "69.5%",
+          "top": "65.9%"
+        },
+        {
+          "key": "B",
+          "left": "73.2%",
+          "top": "28.9%"
+        }
+      ]
+    },
     "formula": function (v) {
         return v.B * v.L / 1_000_000;
     }
@@ -946,6 +994,27 @@ window.AERIS_PIEZAS = [
         "angle": false
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/reduccion-excentrica.webp?v=b16175d3",
+      "sketch": "piezas/3d/reduccion-excentrica-sketch.webp?v=2f220d89",
+      "overlay": [
+        {
+          "key": "L",
+          "left": "57.9%",
+          "top": "42.2%"
+        },
+        {
+          "key": "B",
+          "left": "47.0%",
+          "top": "23.1%"
+        },
+        {
+          "key": "A",
+          "left": "47.0%",
+          "top": "70.9%"
+        }
+      ]
+    },
     "formula": function (v, ut) {
         return ((v.A + v.B) * 2) * (v.L + ut) / 1_000_000;
     }
@@ -990,6 +1059,42 @@ window.AERIS_PIEZAS = [
         "angle": true
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/te-rectangular.webp?v=6fa2f2b4",
+      "sketch": "piezas/3d/te-rectangular-sketch.webp?v=5777ea16",
+      "overlay": [
+        {
+          "key": "L1",
+          "left": "58.8%",
+          "top": "46.4%"
+        },
+        {
+          "key": "B",
+          "left": "45.4%",
+          "top": "30.4%"
+        },
+        {
+          "key": "B2",
+          "left": "58.8%",
+          "top": "2.8%"
+        },
+        {
+          "key": "G",
+          "left": "64.0%",
+          "top": "18.4%"
+        },
+        {
+          "key": "A",
+          "left": "72.2%",
+          "top": "73.0%"
+        },
+        {
+          "key": "A2",
+          "left": "51.7%",
+          "top": "73.0%"
+        }
+      ]
+    },
     "formula": function (v, ut, variant) {
         if (variant === "radius") {
             var trunk = ((v.A + v.B) * 2) * (v.L1 + ut) / 1_000_000;
@@ -1041,6 +1146,42 @@ window.AERIS_PIEZAS = [
         "angle": true
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/te-diagonal.webp?v=6ade4c2b",
+      "sketch": "piezas/3d/te-diagonal-sketch.webp?v=03606412",
+      "overlay": [
+        {
+          "key": "L1",
+          "left": "59.0%",
+          "top": "47.5%"
+        },
+        {
+          "key": "B",
+          "left": "46.0%",
+          "top": "31.6%"
+        },
+        {
+          "key": "B2",
+          "left": "65.6%",
+          "top": "9.6%"
+        },
+        {
+          "key": "G",
+          "left": "64.5%",
+          "top": "23.0%"
+        },
+        {
+          "key": "A",
+          "left": "72.0%",
+          "top": "73.5%"
+        },
+        {
+          "key": "A2",
+          "left": "55.6%",
+          "top": "73.5%"
+        }
+      ]
+    },
     "formula": function (v, ut, variant) {
         if (variant === "radius") {
             var trunk = ((v.A + v.B) * 2) * (v.L1 + ut) / 1_000_000;
@@ -1077,6 +1218,32 @@ window.AERIS_PIEZAS = [
         "angle": false
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/offset-asimetric.webp?v=85482288",
+      "sketch": "piezas/3d/offset-asimetric-sketch.webp?v=a1f1d16a",
+      "overlay": [
+        {
+          "key": "L",
+          "left": "59.1%",
+          "top": "47.4%"
+        },
+        {
+          "key": "B",
+          "left": "43.8%",
+          "top": "30.7%"
+        },
+        {
+          "key": "D",
+          "left": "74.3%",
+          "top": "19.7%"
+        },
+        {
+          "key": "A",
+          "left": "43.8%",
+          "top": "73.5%"
+        }
+      ]
+    },
     "formula": function (v, ut) {
         return ((v.A + v.B) * 2) * (v.L + ut + v.D / 2) / 1_000_000;
     }
@@ -1116,6 +1283,42 @@ window.AERIS_PIEZAS = [
         "angle": true
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/codo-transicion.webp?v=2baf401e",
+      "sketch": "piezas/3d/codo-transicion-sketch.webp?v=6648d529",
+      "overlay": [
+        {
+          "key": "A1",
+          "left": "60.3%",
+          "top": "95.4%"
+        },
+        {
+          "key": "A2",
+          "left": "46.5%",
+          "top": "70.5%"
+        },
+        {
+          "key": "R1",
+          "left": "49.6%",
+          "top": "87.1%"
+        },
+        {
+          "key": "G",
+          "left": "57.7%",
+          "top": "71.3%"
+        },
+        {
+          "key": "B1",
+          "left": "70.9%",
+          "top": "25.5%"
+        },
+        {
+          "key": "B2",
+          "left": "92.9%",
+          "top": "25.5%"
+        }
+      ]
+    },
     "formula": function (v, ut, variant) {
         var pAvg = v.A1 + v.B1 + v.A2 + v.B2;
         if (variant === "radius") {
@@ -1150,6 +1353,32 @@ window.AERIS_PIEZAS = [
         "angle": true
       }
     ],
+    "img3d": {
+      "thumb": "piezas/3d/codo-s.webp?v=00ad3fb4",
+      "sketch": "piezas/3d/codo-s-sketch.webp?v=99bd246e",
+      "overlay": [
+        {
+          "key": "A",
+          "left": "60.4%",
+          "top": "95.4%"
+        },
+        {
+          "key": "R1",
+          "left": "48.8%",
+          "top": "85.9%"
+        },
+        {
+          "key": "G",
+          "left": "61.6%",
+          "top": "75.1%"
+        },
+        {
+          "key": "B",
+          "left": "70.1%",
+          "top": "22.5%"
+        }
+      ]
+    },
     "formula": function (v, ut, variant) {
         if (variant === "radius") {
             var arc = 2 * ((v.A + v.R1) * Math.PI / 180 * v.G);
