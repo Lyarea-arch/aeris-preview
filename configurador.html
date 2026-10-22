@@ -18,7 +18,7 @@
 <meta property="og:locale" content="es_ES">
 <link rel="icon" href="favicon.svg?v=22ffb4f2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1a176ada">
-<link rel="stylesheet" href="styles.css?v=bd1ca62f">
+<link rel="stylesheet" href="styles.css?v=fb1e0bd7">
 </head>
 <body>
 
@@ -51,6 +51,12 @@
 
   <div class="configurator">
     <div class="panel">
+      <!-- Rectangulares (piezas.js) | Circulares (catálogo público de DuctFlow); solo aparece si hay familias públicas -->
+      <div class="mode-tabs" id="mode-tabs" role="tablist" aria-label="Tipo de pieza" hidden>
+        <button type="button" role="tab" data-mode="rect" aria-selected="true" class="active">Rectangulares</button>
+        <button type="button" role="tab" data-mode="circ" aria-selected="false">Circulares</button>
+      </div>
+
       <div class="field-group">
         <div class="field-label">Pieza</div>
         <div class="piece-picker" id="piece-picker">
@@ -59,9 +65,9 @@
             <span id="piece-picker-name">Elige una pieza</span>
             <span class="caret" aria-hidden="true">▾</span>
           </button>
-          <div class="piece-list" id="piece-list" role="listbox" aria-label="Piezas rectangulares" hidden></div>
+          <div class="piece-list" id="piece-list" role="listbox" aria-label="Piezas" hidden></div>
         </div>
-        <p class="field-hint">Piezas rectangulares. Circulares: próximamente.</p>
+        <p class="field-hint" id="piece-hint">Piezas rectangulares a medida.</p>
       </div>
 
       <div class="piece-drawing">
@@ -71,11 +77,11 @@
       </div>
 
       <div class="field-group">
-        <div class="field-label">Medidas <span class="field-label-note">en mm (ángulos en grados)</span></div>
+        <div class="field-label">Medidas <span class="field-label-note" id="dims-note">en mm (ángulos en grados)</span></div>
         <div class="dims" id="dims"></div>
       </div>
 
-      <div class="field-group" id="ut-group">
+      <div class="field-group rect-only" id="ut-group">
         <div class="field-label">Unión <span class="field-label-note">perfil de unión entre tramos</span></div>
         <div class="pills" id="ut-pills"></div>
         <label class="ut-custom" id="ut-custom" hidden>
@@ -86,14 +92,14 @@
           </span>
         </label>
       </div>
-      <p class="field-hint" id="ut-none" hidden>Esta pieza no lleva unión.</p>
+      <p class="field-hint rect-only" id="ut-none" hidden>Esta pieza no lleva unión.</p>
 
       <div class="field-grid">
         <div class="field-group">
           <div class="field-label">Material</div>
           <div class="pills" id="mat-pills"></div>
         </div>
-        <div class="field-group">
+        <div class="field-group rect-only">
           <div class="field-label">Aislamiento</div>
           <div class="pills" id="ins-pills"></div>
         </div>
@@ -105,7 +111,7 @@
             <button type="button" id="qty-plus" aria-label="Más unidades">+</button>
           </div>
         </div>
-        <div class="field-group">
+        <div class="field-group rect-only">
           <div class="field-label">Espesor de chapa</div>
           <div class="thick-auto" id="thick-text">—</div>
           <p class="field-hint">Automático según la medida mayor.</p>
@@ -200,6 +206,6 @@
 
 <script src="nav.js?v=9c87ea60"></script>
 <script src="piezas.js?v=71c24dd3"></script>
-<script src="configurator.js?v=99636581"></script>
+<script src="configurator.js?v=d88d75de"></script>
 </body>
 </html>

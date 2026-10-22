@@ -340,6 +340,21 @@ section[id] { scroll-margin-top: 72px; }
 .ut-custom { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; max-width: 260px; font-size: 13px; color: var(--fg-dim); }
 .ut-custom.invalid .dim-input { border-color: #FF8A7A; }
 .thick-auto { height: 44px; display: flex; align-items: center; font-size: 18px; font-weight: 600; }
+/* Rectangulares | Circulares (catálogo de DuctFlow) */
+.mode-tabs { display: flex; border-bottom: 1px solid var(--line-3); margin-bottom: -8px; }
+.mode-tabs[hidden] { display: none; }
+.mode-tabs button { height: 44px; padding: 0 20px; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--fg-dim2); font: 600 15px 'IBM Plex Sans', sans-serif; cursor: pointer; }
+.mode-tabs button.active { color: var(--fg); border-bottom-color: var(--accent); }
+.mode-off { display: none !important; }
+.dim-input select { flex-grow: 1; min-width: 0; height: 48px; padding: 0 12px; background: transparent; border: 0; color: var(--fg); font: 600 18px 'IBM Plex Sans', sans-serif; cursor: pointer; }
+.dim-input select option { background: var(--ink-2); color: var(--fg); }
+.dim-input select:focus-visible { outline: none; }
+.dim-input select:disabled { color: var(--fg-dim2); cursor: default; }
+.circ-mods { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.piece-ph { display: block; width: 64px; height: 48px; background: #F4F7F8; border-radius: 2px; }
+.piece-option .piece-ph { width: 100%; height: 84px; }
+.items li .piece-ph { width: 56px; height: 44px; flex-shrink: 0; }
+.circ-mods .checkbox-row { display: flex; }
 .note-field { display: flex; flex-direction: column; }
 .note-field textarea { width: 100%; padding: 12px 14px; background: var(--ink); color: var(--fg); border: 1px solid var(--line-3); border-radius: 2px; font: 400 15px/1.5 'IBM Plex Sans', sans-serif; resize: vertical; }
 .note-field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
