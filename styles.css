@@ -130,7 +130,7 @@ section[id] { scroll-margin-top: 72px; }
 .teaser-copy .btn { margin-top: 36px; }
 .teaser-pieces { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .teaser-pieces a { display: flex; flex-direction: column; gap: 8px; padding: 8px; background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 2px; font-size: 14px; font-weight: 500; color: var(--fg-dim3); transition: border-color 0.2s; }
-.teaser-pieces a:hover { border-color: var(--accent); color: #fff; }
+.teaser-pieces a:hover { border-color: var(--accent); color: var(--accent); }
 .teaser-pieces img { width: 100%; height: 110px; object-fit: contain; background: #F4F7F8; border-radius: 2px; }
 
 /* página de obras */
